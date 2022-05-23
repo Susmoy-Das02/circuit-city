@@ -1,0 +1,56 @@
+[
+    {
+        "_id": 1,
+        "name": "G.Skill Trident Z NEO RGB",
+        "perUnitPrice": "12,000",
+        "minimumOrderQuantity": "100",
+        "available quantity": "500",
+        "description": "Gaming Desktop Ram, Intel XMP 2.0 (Extreme Memory Profile) Ready, Dual-Tone Design, Sleek Beveled Edge, Powerful Overclocked Performance, Platform Compatibility, Sync Up with System Lighting",
+        "img": "https://i.ibb.co/Dk88V4W/ram.jpg"
+    },
+    {
+        "_id": 2,
+        "name": "MSI MEG Z690 ACE DDR5 12th Gen Motherboard",
+        "perUnitPrice": "79,000",
+        "minimumOrderQuantity": "100",
+        "available quantity": "600",
+        "description": "1 x Optical S/PDIF-Out, Thunderbolt 4: 2 x USB Type-C up to 40G, Charging support up to 5V/3A, 15W, 2x Mini DisplayPort input ports",
+        "img": "https://i.ibb.co/smcrmXn/msi.jpg"
+    },
+    {
+        "_id": 3,
+        "name": "Samsung T7 2TB External SSD",
+        "perUnitPrice": "34,900",
+        "minimumOrderQuantity": "100",
+        "available quantity": "600",
+        "description": "SSD with strong durability & blazing fast transfer speeds. Worlds 1 Flash Memory Brand. The light, pocket-sized Portable SSD T7 delivers fast speeds with easy and reliable data storage for transferring large files.",
+        "img": "https://i.ibb.co/2gSChPT/ssd.jpg"
+    },
+    {
+        "_id": 4,
+        "name": "Asus ROG Strix GeForce RTX 3090",
+        "perUnitPrice": "289,500",
+        "minimumOrderQuantity": "100",
+        "available quantity": "600",
+        "description": "ROG Strix GeForce RTX 3090 buffed-up design with chart-topping thermal performance. Axial-tech Fan Design has been tuned up with more fan blades and a reversed rotational direction for the center fan.",
+        "img": "https://i.ibb.co/KbRWPGB/graphics.jpg"
+    },
+    {
+        "_id": 5,
+        "name": "Corsair K100 RGB",
+        "perUnitPrice": "19,500",
+        "minimumOrderQuantity": "100",
+        "available quantity": "600",
+        "description": "The incomparable CORSAIR K100 RGB Optical-Mechanical Gaming Keyboard combines stunning aluminum design, per-key RGB lighting with powerful CORSAIR AXON Hyper-Processing Technology and CORSAIR OPX RGB keyswitches.",
+        "img": "https://i.ibb.co/QNx1gvq/keybord.jpg"
+    },
+    {
+        "_id": 6,
+        "name": "Intel 12th Gen Alder Lake Core i9",
+        "perUnitPrice": "59,00",
+        "minimumOrderQuantity": "100",
+        "available quantity": "600",
+        "description": "Control-Flow Enforcement (CET), Device Protection with Boot Guard, Execute Disable Bit, MBE (Mode-Based Execute) Control, OS Guard, Secure Key, Software Guard Extensions, Threat Detection Technology (TDT), Trusted Execution Technology, Intel Quick Sync Video,",
+        "img": "https://i.ibb.co/NSH4VXj/intel.jpg"
+    }
+]
