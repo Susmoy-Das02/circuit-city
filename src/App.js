@@ -4,6 +4,7 @@ import AddReview from './Pages/Dashbord/AddReview';
 import Dashboard from './Pages/Dashbord/Dashboard';
 import MyOrder from './Pages/Dashbord/MyOrder';
 import MyProfile from './Pages/Dashbord/MyProfile';
+import Users from './Pages/Dashbord/Users';
 import Blogs from './Pages/Home/Blogs';
 import Home from './Pages/Home/Home';
 import ItemDetails from './Pages/Home/ItemDetails';
@@ -40,6 +41,7 @@ function App() {
            <Route index element={<MyOrder></MyOrder>}></Route>
           <Route path='review' element={<AddReview></AddReview>}></Route>
           <Route path='profile' element={<MyProfile></MyProfile>}></Route>
+          <Route path='users' element={<Users></Users>}></Route>
         </Route>
 
       </Routes>
