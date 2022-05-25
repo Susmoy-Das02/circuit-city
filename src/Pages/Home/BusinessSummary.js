@@ -14,7 +14,7 @@ const BusinessSummary = () => {
         }}
             class="card bg-base-100 shadow-xl my-12">
             <div class="card-body">
-                <h2 class="card-title text-amber-500 text-3xl">MILLION BUSINESS TRUST US</h2>
+                <h2 class="card-title text-amber-500 text-3xl ">MILLION BUSINESS TRUST US</h2>
                 <p className='text-xl'>TRY TO UNDERSTAND USER EXPECTATION</p>
 
                 <div class="stats shadow">
