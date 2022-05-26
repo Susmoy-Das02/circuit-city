@@ -3,7 +3,6 @@ import './App.css';
 import AddReview from './Pages/Dashbord/AddReview';
 import Dashboard from './Pages/Dashbord/Dashboard';
 import MyOrder from './Pages/Dashbord/MyOrder';
-import MyProfile from './Pages/Dashbord/MyProfile';
 import Users from './Pages/Dashbord/Users';
 import Blogs from './Pages/Home/Blogs';
 import Home from './Pages/Home/Home';
@@ -17,6 +16,8 @@ import NotFound from './Pages/Shared/NotFound';
 import { ToastContainer} from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
+import RequireAdmin from './Pages/Login/RequireAdmin';
+import AddProduct from './Pages/Dashbord/AddProduct';
 
 function App() {
   return (
@@ -45,8 +46,8 @@ function App() {
         }>
           <Route index element={<MyOrder></MyOrder>}></Route>
           <Route path='review' element={<AddReview></AddReview>}></Route>
-          <Route path='profile' element={<MyProfile></MyProfile>}></Route>
-          <Route path='users' element={<Users></Users>}></Route>
+          <Route path='users' element={<RequireAdmin><Users></Users></RequireAdmin>}></Route>
+          <Route path='addProduct' element={<RequireAdmin><AddProduct></AddProduct></RequireAdmin>}></Route>
         </Route>
         <Route path='*' element={<NotFound></NotFound>} ></Route>
       </Routes>
