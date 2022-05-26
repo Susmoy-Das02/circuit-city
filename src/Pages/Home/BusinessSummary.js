@@ -7,12 +7,15 @@ import { FcDepartment } from "react-icons/fc";
 
 const BusinessSummary = () => {
     return (
-        <div style={{
+        
+       <div>
+           <h1 className='text-4xl text-center font-bold mt-10 text-primary'>Business summary</h1>
+            <div style={{
             background: `url(${footer})`,
             backgroundSize: 'cover'
 
         }}
-            class="card bg-base-100 shadow-xl my-12">
+            class="card bg-base-100 shadow-xl ">
             <div class="card-body">
                 <h2 class="card-title text-amber-500 text-3xl ">MILLION BUSINESS TRUST US</h2>
                 <p className='text-xl'>TRY TO UNDERSTAND USER EXPECTATION</p>
@@ -60,6 +63,7 @@ const BusinessSummary = () => {
 
             </div>
         </div>
+       </div>
     );
 };
 

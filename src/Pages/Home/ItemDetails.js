@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import { toast } from 'react-toastify';
 
 const ItemDetails = () => {
     const { itemId } = useParams();
     const [item, setItem] = useState({});
-    const {info, setInfo} = useState({});
+
     const [user, loading, error] = useAuthState(auth);
 
     useEffect(() => {
@@ -14,14 +15,72 @@ const ItemDetails = () => {
         console.log(url);
         fetch(url)
             .then(res => res.json())
-            .then(data => setItem(data));
+            .then(data => setItem({
+                itemName: data?.name,
+                perUnitPrice: data?.perUnitPrice,
+                minimumOrderQuantity: data?.minimumOrderQuantity,
+                availableQuantity: data?.availableQuantity,
+                name: user?.displayName,
+                email: user?.email,
+                phone: "",
+                orderQuantity: ""
+            }));
 
     }, [])
 
-    const handleOrder = e => {
-        e.preventDefault(); 
-    console.log({[e.target.name]:e.target.value});
+    const handleChange = (e) => {
+        e.preventDefault();
+        setItem({ ...item, [e?.target?.name]: e?.target?.value })
+        console.log(item);
     }
+    const handleOrder = e => {
+        e.preventDefault();
+        if (item.orderQuantity !== "") {
+            if (item?.minimumOrderQuantity >= item?.orderQuantity) {
+                alert("if block")
+            } else if (item?.availableQuantity < item?.orderQuantity) {
+                alert("else if block")
+            } else {
+
+                console.log(item);
+                setItem({ ...item, [item?.orderQuantity]: "" });
+            }
+        } else {
+            alert("set order quantity")
+        }
+
+        const order = {
+            itemName:item?.itemName,
+            perUnitPrice:item?.perUnitPrice,
+            minimumOrderQuantity:item?.minimumOrderQuantity,
+            availableQuantity: item?.availableQuantity,
+            name: user?.displayName,
+            email: user?.email,
+            phone:e.target.phone.value,
+            orderQuantity:e.target.orderQuantity.value,
+
+
+
+
+        }
+
+        fetch('http://localhost:5000/orders',{
+            method: 'POST',
+            headers:{
+                'content-type': 'application/json'
+            },
+            body:JSON.stringify(order)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+
+        })
+
+
+    }
+
+
 
 
 
@@ -39,56 +98,58 @@ const ItemDetails = () => {
                         <label class="label">
                             <span class="label-text">Item name</span>
                         </label>
-                        <input type="text" name='itemName' value={item.name} class="input input-bordered w-full max-w-xs" />
+                        <input type="text" name='itemName' value={item?.itemName} class="input input-bordered w-full max-w-xs" onChange={(e) => handleChange(e)} />
                     </div>
 
                     <div class="form-control w-full max-w-xs">
                         <label class="label">
                             <span class="label-text">Per unit price</span>
                         </label>
-                        <input type="number" name='perUnitPrice' value={item.perUnitPrice} class="input input-bordered w-full max-w-xs" />
+                        <input type="text" name='perUnitPrice' value={item?.perUnitPrice} class="input input-bordered w-full max-w-xs" onChange={(e) => handleChange(e)} />
                     </div>
 
                     <div class="form-control w-full max-w-xs">
                         <label class="label">
                             <span class="label-text">Minimum order quantity</span>
                         </label>
-                        <input type="number" name='minimumOrderQuantity' value={item.minimumOrderQuantity} class="input input-bordered w-full max-w-xs" />
+                        <input type="text" name='minimumOrderQuantity' value={item?.minimumOrderQuantity} class="input input-bordered w-full max-w-xs" onChange={(e) => handleChange(e)} />
                     </div>
 
                     <div class="form-control w-full max-w-xs">
                         <label class="label">
                             <span class="label-text">Available quantity</span>
                         </label>
-                        <input type="number" name='availableQuantity' value={item.availableQuantity} class="input input-bordered w-full max-w-xs" />
+                        <input type="text" name='availableQuantity' value={item?.availableQuantity} class="input input-bordered w-full max-w-xs" onChange={(e) => handleChange(e)} />
+                    </div>
+                    <div class="form-control w-full max-w-xs">
+                        <label class="label">
+                            <span class="label-text">Your Name</span>
+                        </label>
+                        <input type="text" name='name' value={item?.displayName || ''} class="input input-bordered w-full max-w-xs" onChange={(e) => handleChange(e)} />
                     </div>
 
                     <div class="form-control w-full max-w-xs">
                         <label class="label">
-                            <span class="label-text">Your name</span>
-                        </label>
-
-                        <input type="text" name="name" value={user?.displayName || ''} class="input input-bordered w-full max-w-xs" />
-
-                        <label class="label">
                             <span class="label-text">Your Email</span>
                         </label>
 
-                        <input type="email" name="email" value={user?.email || ''} class="input input-bordered w-full max-w-xs" />
-
+                        <input type="email" name="email" value={item?.email || ''} class="input input-bordered w-full max-w-xs" onChange={(e) => handleChange(e)} />
+                    </div>
+                    <div class="form-control w-full max-w-xs">
                         <label class="label">
                             <span class="label-text">Phone Number</span>
                         </label>
 
-                        <input type="text" name="phone" placeholder="Phone Number" class="input input-bordered w-full max-w-xs" />
-
+                        <input type="text" name="phone" placeholder="Phone Number" class="input input-bordered w-full max-w-xs" onChange={(e) => handleChange(e)} />
+                    </div>
+                    <div class="form-control w-full max-w-xs">
                         <label class="label">
                             <span class="label-text">Order  quantity</span>
                         </label>
 
-                        <input type="text" name="order quantity" placeholder="Order  quantity" class="input input-bordered w-full max-w-xs" />
-
+                        <input type="text" name="orderQuantity" placeholder="Order  quantity" class="input input-bordered w-full max-w-xs" onChange={(e) => handleChange(e)} />
                     </div>
+
 
                     <div class="card-actions">
                         <button type='submit' class="btn btn-primary">purchase Order</button>
@@ -97,8 +158,8 @@ const ItemDetails = () => {
                 </form>
 
 
-            </div>
-        </div>
+            </div >
+        </div >
 
 
     );

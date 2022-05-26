@@ -7,27 +7,27 @@ const Footer = () => {
             background: `url(${footer})`,
             backgroundSize: 'cover'
 
-        }} className="p-10 my-12">
+        }} className="p-10 mt-12">
             <div className='footer'>
                 <div>
-                    <span className="footer-title">Services</span>
-                    <a className="link link-hover">Branding</a>
-                    <a className="link link-hover">Design</a>
+                    <span className="footer-title">Company</span>
+                    <a className="link link-hover">Home</a>
+                    <a className="link link-hover">Our factories</a>
                     <a className="link link-hover">Marketing</a>
                     <a className="link link-hover">Advertisement</a>
                 </div>
                 <div>
-                    <span className="footer-title">Company</span>
-                    <a className="link link-hover">About us</a>
-                    <a className="link link-hover">Contact</a>
-                    <a className="link link-hover">Jobs</a>
-                    <a className="link link-hover">Press kit</a>
+                    <span className="footer-title">Production</span>
+                    <a className="link link-hover">Technology</a>
+                    <a className="link link-hover">Products</a>
+                    <a className="link link-hover">Quality</a>
+                    <a className="link link-hover">Our customers</a>
                 </div>
                 <div>
-                    <span className="footer-title">Legal</span>
+                    <span className="footer-title">Contact us</span>
                     <a className="link link-hover">Terms of use</a>
-                    <a className="link link-hover">Privacy policy</a>
-                    <a className="link link-hover">Cookie policy</a>
+                    <a className="link link-hover">Addresses of factories</a>
+                    <a className="link link-hover">Trading houses</a>
                 </div>
             </div>
             <div className='my-10 text-center'>
