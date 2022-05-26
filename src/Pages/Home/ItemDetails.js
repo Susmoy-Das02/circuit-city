@@ -64,7 +64,7 @@ const ItemDetails = () => {
 
         }
 
-        fetch('http://localhost:5000/orders',{
+        fetch('https://shrouded-atoll-35584.herokuapp.com/orders',{
             method: 'POST',
             headers:{
                 'content-type': 'application/json'

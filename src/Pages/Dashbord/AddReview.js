@@ -5,7 +5,7 @@ const AddReview = () => {
 
     const onSubmit = async data => {
         console.log(' data', data);
-        const url = `http://localhost:5000/review`;
+        const url = `https://shrouded-atoll-35584.herokuapp.com/review`;
          fetch(url, {
              method:'POST',
              headers: {

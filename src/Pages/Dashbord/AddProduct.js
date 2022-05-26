@@ -5,7 +5,7 @@ const AddProduct = () => {
 
     const onSubmit = async data => {
         console.log(' data', data);
-        const url = `http://localhost:5000/item`;
+        const url = `https://shrouded-atoll-35584.herokuapp.com/item`;
          fetch(url, {
              method:'POST',
              headers: {
