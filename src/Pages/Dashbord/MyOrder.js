@@ -1,16 +1,37 @@
+import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 
 const MyOrder = () => {
     const [items, setItem] = useState([])
     const [user] = useAuthState(auth);
+    const navigate = useNavigate()
 
     useEffect(() => {
         if (user) {
-            fetch(`http://localhost:5000/order?email=${user.email}`)
-                .then(res => res.json())
-                .then(data => setItem(data))
+            fetch(`http://localhost:5000/order?email=${user.email}`, {
+                method: 'GET',
+                headers: {
+                    'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                }
+            })
+                .then(res => {
+                    console.log('res', res);
+                    if (res.status === 401 || res.status === 403) {
+                        
+                        signOut(auth);
+                        localStorage.removeItem('accessToken');
+                        navigate('/');
+
+                    }
+                    return res.json()
+                })
+                .then(data => {
+
+                    setItem(data);
+                })
         }
     }, [user])
 
@@ -30,15 +51,15 @@ const MyOrder = () => {
                     </thead>
                     <tbody>
                         {
-                            items.map((i, index) =><tr>
-                                <th>{index +1 }</th>
+                            items.map((i, index) => <tr>
+                                <th>{index + 1}</th>
                                 <td>{i.name}</td>
                                 <td>{i.itemName}</td>
                                 <td>{i.perUnitPrice}</td>
                                 <td>{i.orderQuantity}</td>
                             </tr>)
                         }
-                        
+
                     </tbody>
                 </table>
             </div>
